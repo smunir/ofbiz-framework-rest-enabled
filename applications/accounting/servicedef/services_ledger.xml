@@ -751,17 +751,17 @@ under the License.
     </service>
 
     <!-- GlAccountClass services -->
-    <service name="createGlAccountClass" default-entity-name="GlAccountClass" engine="entity-auto" invoke="create" auth="true">
+    <service name="createGlAccountClass" default-entity-name="GlAccountClass" engine="entity-auto" invoke="create" auth="true" export="true" action="POST">
         <description>Create a GlAccountClass</description>
         <auto-attributes include="nonpk" mode="IN" optional="true"/>
         <auto-attributes include="pk" mode="INOUT" optional="true"/>
     </service>
-    <service name="updateGlAccountClass" default-entity-name="GlAccountClass" engine="entity-auto" invoke="update" auth="true">
+    <service name="updateGlAccountClass" default-entity-name="GlAccountClass" engine="entity-auto" invoke="update" auth="true" export="true" action="PUT">
         <description>Update a GlAccountClass</description>
         <auto-attributes include="pk" mode="IN" optional="false"/>
         <auto-attributes include="nonpk" mode="IN" optional="true"/>
     </service>
-    <service name="deleteGlAccountClass" default-entity-name="GlAccountClass" engine="entity-auto" invoke="delete" auth="true">
+    <service name="deleteGlAccountClass" default-entity-name="GlAccountClass" engine="entity-auto" invoke="delete" auth="true" export="true" action="DELETE">
         <description>Delete a GlAccountClass</description>
         <auto-attributes include="pk" mode="IN" optional="false"/>
     </service>

@@ -38,7 +38,7 @@ under the License.
         <override name="longDescription" allow-html="safe"/>
     </service>
     <service name="createProduct" default-entity-name="Product" engine="groovy"
-                location="component://product/src/main/groovy/org/apache/ofbiz/product/product/product/ProductServicesScript.groovy" invoke="createProduct" auth="true">
+                location="component://product/src/main/groovy/org/apache/ofbiz/product/product/product/ProductServicesScript.groovy" invoke="createProduct" auth="true" export="true" action="POST">
         <description>Create a Product</description>
         <implements service="interfaceProduct"/>
         <auto-attributes include="pk" mode="INOUT" optional="true"/>
@@ -46,7 +46,7 @@ under the License.
         <override name="internalName" optional="false"/>
     </service>
     <service name="updateProduct" default-entity-name="Product" engine="groovy"
-                location="component://product/src/main/groovy/org/apache/ofbiz/product/product/product/ProductServicesScript.groovy" invoke="updateProduct" auth="true">
+                location="component://product/src/main/groovy/org/apache/ofbiz/product/product/product/ProductServicesScript.groovy" invoke="updateProduct" auth="true" export="true" action="PUT">
         <description>Update a Product</description>
         <implements service="interfaceProduct"/>
         <auto-attributes include="pk" mode="IN" optional="false"/>
@@ -226,24 +226,24 @@ under the License.
 
     <!-- Product Association Services -->
 
-    <service name="createProductAssoc" default-entity-name="ProductAssoc" engine="entity-auto" invoke="create" auth="true">
+    <service name="createProductAssoc" default-entity-name="ProductAssoc" engine="entity-auto" invoke="create" auth="true" export="true" action="POST">
         <permission-service service-name="productGenericPermission" main-action="CREATE"/>
         <auto-attributes include="pk" mode="IN" optional="false"/>
         <auto-attributes include="nonpk" mode="IN" optional="true"/>
     </service>
-    <service name="updateProductAssoc" default-entity-name="ProductAssoc" engine="entity-auto" invoke="update" auth="true">
+    <service name="updateProductAssoc" default-entity-name="ProductAssoc" engine="entity-auto" invoke="update" auth="true" export="true" action="PUT">
         <permission-service service-name="productGenericPermission" main-action="UPDATE"/>
         <auto-attributes include="pk" mode="IN" optional="false"/>
         <auto-attributes include="nonpk" mode="IN" optional="true"/>
     </service>
-    <service name="deleteProductAssoc" default-entity-name="ProductAssoc" engine="entity-auto" invoke="delete" auth="true">
+    <service name="deleteProductAssoc" default-entity-name="ProductAssoc" engine="entity-auto" invoke="delete" auth="true" export="true" action="DELETE">
         <permission-service service-name="productGenericPermission" main-action="DELETE"/>
         <auto-attributes include="pk" mode="IN" optional="false"/>
     </service>
 
     <!-- Product Price Services -->
     <service name="createProductPrice" default-entity-name="ProductPrice" engine="groovy"
-                location="component://product/src/main/groovy/org/apache/ofbiz/product/product/price/PriceServicesScript.groovy" invoke="createProductPrice" auth="true">
+                location="component://product/src/main/groovy/org/apache/ofbiz/product/product/price/PriceServicesScript.groovy" invoke="createProductPrice" auth="true" export="true" action="POST">
         <description>
             Create a Product Price.
 
@@ -270,7 +270,7 @@ under the License.
         <override name="price" optional="false"/>
     </service>
     <service name="updateProductPrice" default-entity-name="ProductPrice" engine="groovy"
-                location="component://product/src/main/groovy/org/apache/ofbiz/product/product/price/PriceServicesScript.groovy" invoke="updateProductPrice" auth="true">
+                location="component://product/src/main/groovy/org/apache/ofbiz/product/product/price/PriceServicesScript.groovy" invoke="updateProductPrice" auth="true" export="true" action="PUT">
         <description>Update an ProductPrice</description>
         <permission-service service-name="checkProductRelatedPermission" main-action="UPDATE"/>
         <auto-attributes include="pk" mode="IN" optional="false"/>
@@ -287,7 +287,7 @@ under the License.
         <override name="price" optional="false"/>
     </service>
     <service name="deleteProductPrice" default-entity-name="ProductPrice" engine="groovy"
-                location="component://product/src/main/groovy/org/apache/ofbiz/product/product/price/PriceServicesScript.groovy" invoke="deleteProductPrice" auth="true">
+                location="component://product/src/main/groovy/org/apache/ofbiz/product/product/price/PriceServicesScript.groovy" invoke="deleteProductPrice" auth="true" export="true" action="DELETE">
         <description>Delete an ProductPrice</description>
         <permission-service service-name="checkProductRelatedPermission" main-action="DELETE"/>
         <auto-attributes include="pk" mode="IN" optional="false"/>
@@ -295,7 +295,7 @@ under the License.
     </service>
 
     <!-- called by ECAs on ProductPrice service call events -->
-    <service name="saveProductPriceChange" default-entity-name="ProductPriceChange" engine="entity-auto" invoke="create" auth="true">
+    <service name="saveProductPriceChange" default-entity-name="ProductPriceChange" engine="entity-auto" invoke="create" auth="true" export="true" action="POST">
         <description>Save History of a ProductPrice Change</description>
         <permission-service service-name="productPriceGenericPermission" main-action="CREATE"/>
         <auto-attributes include="pk" mode="IN" optional="false" entity-name="ProductPrice"/>
@@ -304,18 +304,18 @@ under the License.
     </service>
 
     <!-- Product PaymentMethodType Services -->
-    <service name="createProductPaymentMethodType" default-entity-name="ProductPaymentMethodType" engine="entity-auto" invoke="create" auth="true">
+    <service name="createProductPaymentMethodType" default-entity-name="ProductPaymentMethodType" engine="entity-auto" invoke="create" auth="true" export="true" action="POST">
         <description>Create an ProductPaymentMethodType</description>
         <auto-attributes include="pk" mode="IN" optional="false"/>
         <auto-attributes include="nonpk" mode="IN" optional="true"/>
         <override name="fromDate" optional="true"/>
     </service>
-    <service name="updateProductPaymentMethodType" default-entity-name="ProductPaymentMethodType" engine="entity-auto" invoke="update" auth="true">
+    <service name="updateProductPaymentMethodType" default-entity-name="ProductPaymentMethodType" engine="entity-auto" invoke="update" auth="true" export="true" action="PUT">
         <description>Update an ProductPaymentMethodType</description>
         <auto-attributes include="pk" mode="IN" optional="false"/>
         <auto-attributes include="nonpk" mode="IN" optional="true"/>
     </service>
-    <service name="deleteProductPaymentMethodType" default-entity-name="ProductPaymentMethodType" engine="entity-auto" invoke="delete" auth="true">
+    <service name="deleteProductPaymentMethodType" default-entity-name="ProductPaymentMethodType" engine="entity-auto" invoke="delete" auth="true" export="true" action="DELETE">
         <description>Delete an ProductPaymentMethodType</description>
         <auto-attributes include="pk" mode="IN" optional="false"/>
     </service>
@@ -340,19 +340,19 @@ under the License.
     </service>
 
     <!-- ProductGlAccount Services -->
-    <service name="createProductGlAccount" default-entity-name="ProductGlAccount" engine="entity-auto" invoke="create" auth="true">
+    <service name="createProductGlAccount" default-entity-name="ProductGlAccount" engine="entity-auto" invoke="create" auth="true" export="true" action="POST">
         <description>Create a ProductGlAccount</description>
         <permission-service service-name="productGenericPermission" main-action="CREATE"/>
         <auto-attributes include="pk" mode="IN" optional="false"/>
         <auto-attributes include="nonpk" mode="IN" optional="false"/>
     </service>
-    <service name="updateProductGlAccount" default-entity-name="ProductGlAccount" engine="entity-auto" invoke="update" auth="true">
+    <service name="updateProductGlAccount" default-entity-name="ProductGlAccount" engine="entity-auto" invoke="update" auth="true" export="true" action="PUT">
         <description>Update a ProductGlAccount</description>
         <permission-service service-name="productGenericPermission" main-action="UPDATE"/>
         <auto-attributes include="pk" mode="IN" optional="false"/>
         <auto-attributes include="nonpk" mode="IN" optional="false"/>
     </service>
-    <service name="deleteProductGlAccount" default-entity-name="ProductGlAccount" engine="entity-auto" invoke="delete" auth="true">
+    <service name="deleteProductGlAccount" default-entity-name="ProductGlAccount" engine="entity-auto" invoke="delete" auth="true" export="true" action="DELETE">
         <description>Delete a ProductGlAccount</description>
         <permission-service service-name="productGenericPermission" main-action="DELETE"/>
         <auto-attributes include="pk" mode="IN" optional="false"/>
@@ -666,14 +666,14 @@ under the License.
     <!-- Product Category Services -->
     <!-- ======================================== -->
     <service name="createProductCategory" default-entity-name="ProductCategory" engine="groovy"
-                location="component://product/src/main/groovy/org/apache/ofbiz/product/product/category/CategoryServicesScript.groovy" invoke="createProductCategory" auth="true">
+                location="component://product/src/main/groovy/org/apache/ofbiz/product/product/category/CategoryServicesScript.groovy" invoke="createProductCategory" auth="true" export="true" action="POST">
         <description>Create an ProductCategory</description>
         <auto-attributes include="pk" mode="INOUT" optional="true"/>
         <auto-attributes include="nonpk" mode="IN" optional="true"/>
         <override name="productCategoryTypeId" optional="false"/>
     </service>
     <service name="updateProductCategory" default-entity-name="ProductCategory" engine="groovy"
-                location="component://product/src/main/groovy/org/apache/ofbiz/product/product/category/CategoryServicesScript.groovy" invoke="updateProductCategory" auth="true">
+                location="component://product/src/main/groovy/org/apache/ofbiz/product/product/category/CategoryServicesScript.groovy" invoke="updateProductCategory" auth="true" export="true" action="PUT">
         <description>Update an ProductCategory</description>
         <auto-attributes include="pk" mode="IN" optional="false"/>
         <auto-attributes include="nonpk" mode="IN" optional="true"/>
@@ -696,7 +696,7 @@ under the License.
         <attribute name="duplicateRoles" type="String" mode="IN" optional="true"/>
     </service>
 
-    <service name="safeAddProductToCategory" default-entity-name="ProductCategoryMember" engine="entity-auto" invoke="create" auth="true">
+    <service name="safeAddProductToCategory" default-entity-name="ProductCategoryMember" engine="entity-auto" invoke="create" auth="true" export="true" action="POST">
         <description>Add Product To Category</description>
         <permission-service service-name="checkCategoryPermissionWithViewPurchaseAllow" main-action="CREATE"/>
         <auto-attributes include="pk" mode="IN" optional="false"/>
@@ -704,7 +704,7 @@ under the License.
     </service>
 
     <service name="addProductToCategories" default-entity-name="ProductCategoryMember" engine="groovy"
-                location="component://product/src/main/groovy/org/apache/ofbiz/product/product/category/CategoryServicesScript.groovy" invoke="addProductToCategories" auth="true">
+                location="component://product/src/main/groovy/org/apache/ofbiz/product/product/category/CategoryServicesScript.groovy" invoke="addProductToCategories" auth="true" export="true" action="POST">
         <description>Add Product To Multiple Categories</description>
         <permission-service service-name="checkCategoryPermissionWithViewPurchaseAllow" main-action="CREATE"/>
         <auto-attributes include="pk" mode="IN" optional="false">
@@ -714,14 +714,14 @@ under the License.
         <attribute name="categories" type="Object" mode="IN" optional="false"/>
         <override name="fromDate" optional="true"/>
     </service>
-    <service name="addProductToCategory" default-entity-name="ProductCategoryMember" engine="entity-auto" invoke="create" auth="true">
+    <service name="addProductToCategory" default-entity-name="ProductCategoryMember" engine="entity-auto" invoke="create" auth="true" export="true" action="POST">
         <description>Add Product To Category</description>
         <permission-service service-name="checkCategoryPermissionWithViewPurchaseAllow" main-action="CREATE"/>
         <auto-attributes include="pk" mode="IN" optional="false"/>
         <auto-attributes include="nonpk" mode="IN" optional="true"/>
         <override name="fromDate" optional="true"/>
     </service>
-    <service name="updateProductToCategory" default-entity-name="ProductCategoryMember" engine="entity-auto" invoke="update" auth="true">
+    <service name="updateProductToCategory" default-entity-name="ProductCategoryMember" engine="entity-auto" invoke="update" auth="true" export="true" action="PUT">
         <description>Update a ProductCategoryMember</description>
         <permission-service service-name="checkCategoryPermissionWithViewPurchaseAllow" main-action="UPDATE"/>
         <auto-attributes include="pk" mode="IN" optional="false"/>
@@ -1701,17 +1701,17 @@ under the License.
     </service>
 
     <!-- ProductCategoryType services -->
-    <service name="createProductCategoryType" default-entity-name="ProductCategoryType" engine="entity-auto" invoke="create" auth="true">
+    <service name="createProductCategoryType" default-entity-name="ProductCategoryType" engine="entity-auto" invoke="create" auth="true" export="true" action="POST">
         <description>Create a ProductCategoryType</description>
         <auto-attributes include="nonpk" mode="IN" optional="true"/>
         <auto-attributes include="pk" mode="INOUT" optional="true"/>
     </service>
-    <service name="updateProductCategoryType" default-entity-name="ProductCategoryType" engine="entity-auto" invoke="update" auth="true">
+    <service name="updateProductCategoryType" default-entity-name="ProductCategoryType" engine="entity-auto" invoke="update" auth="true" export="true" action="PUT">
         <description>Update a GlFiscalType</description>
         <auto-attributes include="pk" mode="IN" optional="false"/>
         <auto-attributes include="nonpk" mode="IN" optional="true"/>
     </service>
-    <service name="deleteProductCategoryType" default-entity-name="ProductCategoryType" engine="entity-auto" invoke="delete" auth="true">
+    <service name="deleteProductCategoryType" default-entity-name="ProductCategoryType" engine="entity-auto" invoke="delete" auth="true" export="true" action="DELETE">
         <description>Delete a ProductCategoryType</description>
         <auto-attributes include="pk" mode="IN" optional="false"/>
     </service>
